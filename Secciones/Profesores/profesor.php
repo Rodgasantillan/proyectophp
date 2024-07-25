@@ -28,9 +28,9 @@
                     </div>
                     <div class="card-footer">
                             <div class="btn-group" role="group" aria-label="Button group name">
-                                <button type="submit" class="btn btn-outline-success">Registrar</button>
-                                <button type="submit" class="btn btn-outline-warning">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                <button type="submit" name="btnAccion" value="btnAdd" class="btn btn-outline-success"><i class="fas fa-save"></i></button>
+                                <button type="submit" name="btnAccion" value="btnEdit" class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                <button type="submit" name="btnAccion" value="btnDelete" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
                             </div>
                         </form>
                     </div>
@@ -57,8 +57,9 @@
                                 <td><?php echo $profesor['email']; ?></td>
                                 <td>
                                     <form action="" method="">
-                                        <button type="submit" class="btn btn-outline-info">Seleccionar</button>
+                                        <button type="submit" name="btnAccion" value="btnSelect" class="btn btn-outline-info"><i class="fas fa-hand-pointer"></i></button>
                                     </form>
+                                    <button type="button" class="btn btn-outline-danger"><i class="fas fa-file-pdf"></i></button>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
