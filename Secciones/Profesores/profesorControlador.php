@@ -28,13 +28,41 @@
                 }
             break;
             case 'btnEdit': 
-                #echo "<script>alert('Presionaste el boton editar');</script>";
+                $sql = $conexion->prepare("UPDATE profesores SET nombre = :nombre, apellidos = :app , email = :email WHERE id = :id");
+                $sql->bindParam(":nombre",$nombre);
+                $sql->bindParam(":app", $app);
+                $sql->bindParam(":email", $email);
+                $sql->bindParam(":id", $id);
+                $sql->execute();
+
+                if(isset($sql))
+                {
+                    $mensaje = "Información Corregida";
+                    echo "<script>alert('".$mensaje."');</script>";
+                }
+                else{
+                    $mensaje = "Error al corrgir la información";
+                    echo "<script>alert('".$mensaje."');</script>";
+                }
             break;
             case 'btnDelete': 
                 #echo "<script>alert('Presionaste el boton eliminar');</script>";
             break;
             case 'btnSelect': 
-                #echo "<script>alert('Presionaste el boton seleccionar');</script>";
+                $sql = $conexion->prepare("SELECT * FROM profesores WHERE id = :id");
+                $sql->bindParam(":id", $id);
+                $sql->execute();
+
+                if(isset($sql)){
+                    $profesor = $sql->fetch(PDO::FETCH_ASSOC);
+                    $nombreProfe = $profesor['nombre'];
+                    $appProfe = $profesor['apellidos'];
+                    $emailProfe = $profesor['email'];
+                }
+                else{
+                    $mensaje = "Error, información no encontrada";
+                    echo "<script>alert('".$mensaje."');</script>";
+                }
             break;
             default: break;
         }

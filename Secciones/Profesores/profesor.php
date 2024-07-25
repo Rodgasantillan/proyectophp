@@ -11,19 +11,19 @@
                         <form action="" method="post">
                             <div class="mb-3">
                                 <label for="id">ID: </label>
-                                <input type="text" name="id" id="id" class="form-control" placeholder="ID..." value="" readonly>
+                                <input type="text" name="id" id="id" class="form-control" placeholder="ID..." value="<?php echo $id;?>" readonly>
                             </div>
                             <div class="mb-3">
                                 <label for="nombre">Nombre Profesor:</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del profesor..." required>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del profesor..." value="<?php echo $nombreProfe;?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="apellidos">Apellidos del Profesor:</label>
-                                <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="apellidos del profesor" required>
+                                <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="apellidos del profesor" value="<?php echo $appProfe;?>" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email">Email del Profesor</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="profesor@example.com" required>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="profesor@example.com" value="<?php echo $emailProfe;?>" required>
                             </div>
                     </div>
                     <div class="card-footer">
@@ -56,7 +56,8 @@
                                 <td><?php echo $profesor['apellidos']; ?></td>
                                 <td><?php echo $profesor['email']; ?></td>
                                 <td>
-                                    <form action="" method="">
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" id="id" value="<?php echo $profesor['id'];?>">
                                         <button type="submit" name="btnAccion" value="btnSelect" class="btn btn-outline-info"><i class="fas fa-hand-pointer"></i></button>
                                     </form>
                                     <button type="button" class="btn btn-outline-danger"><i class="fas fa-file-pdf"></i></button>
