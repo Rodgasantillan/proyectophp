@@ -13,8 +13,8 @@
                 #echo "<script>alert('Presionaste el boton guardar');</script>";
                 $sql = $conexion->prepare("INSERT INTO profesores (id,nombre,apellidos,email) 
                                 VALUES (NULL, :nombre,:app, :email);");
-                $sql->bindParam(":nombre",$nombre);
-                $sql->bindParam(":app", $app);
+                $sql->bindParam(":nombre", utf8_encode($nombre));
+                $sql->bindParam(":app", utf8_encode($app));
                 $sql->bindParam(":email", $email);
                 $sql->execute();
 
@@ -29,8 +29,8 @@
             break;
             case 'btnEdit': 
                 $sql = $conexion->prepare("UPDATE profesores SET nombre = :nombre, apellidos = :app , email = :email WHERE id = :id");
-                $sql->bindParam(":nombre",$nombre);
-                $sql->bindParam(":app", $app);
+                $sql->bindParam(":nombre", utf8_encode($nombre));
+                $sql->bindParam(":app", utf8_encode($app));
                 $sql->bindParam(":email", $email);
                 $sql->bindParam(":id", $id);
                 $sql->execute();
@@ -46,7 +46,18 @@
                 }
             break;
             case 'btnDelete': 
-                #echo "<script>alert('Presionaste el boton eliminar');</script>";
+                $sql = $conexion->prepare("DELETE FROM profesores WHERE id = :id");
+                $sql->bindParam(":id", $id);
+                $sql->execute();
+
+                if(isset($sql)){
+                    $mensaje = "Registro eliminado correctamente";
+                    echo "<script>alert('".$mensaje."');</script>";
+                }
+                else{
+                    $mensaje = "Error al eliminar el registro";
+                    echo "<script>alert('".$mensaje."');</script>";
+                }
             break;
             case 'btnSelect': 
                 $sql = $conexion->prepare("SELECT * FROM profesores WHERE id = :id");
@@ -68,12 +79,10 @@
         }
     }
 
-    print_r($_POST);
+    //print_r($_POST);
 
     //Consultamos información de la tabla profesores
     $sql = "SELECT * FROM profesores";
     $lstProfesores = $conexion->query($sql);
     $profesores = $lstProfesores->fetchAll();
-    
-    //print_r($profesores);
 ?>
