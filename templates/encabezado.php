@@ -23,7 +23,7 @@
                             <a href="#" class="nav-link">Alumnos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Cursos</a>
+                            <a href="../secciones/Cursos/curso.php" class="nav-link">Cursos</a>
                         </li>
                         <li class="nav-item">
                             <a href="../secciones/Profesores/profesor.php" class="nav-link">Profesores</a>
