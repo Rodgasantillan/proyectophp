@@ -14,15 +14,16 @@
                                 <input type="text" name="id" id="id" class="form-control" placeholder="ID..." value="" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="nombre_curso">ID: </label>
+                                <label for="nombre_curso">Nombre del Curso: </label>
                                 <input type="text" name="nombre_curso" id="nombre_curso" class="form-control" placeholder="Nombre del Curso" value="">
                             </div>
                             <div class="mb-3">
                                 <label for="idProf">Profesor</label>
                                 <select name="idProf" id="idProf" class="form-control">
                                     <option>Seleccione una Opción</option>
-                                    <option value="">Juan Escobar López</option>
-                                    <option value="">Laura Hernandez Balcazar</option>
+                                    <?php foreach($lstProfs as $prof){?>
+                                        <option value="<?php echo $prof['id'];?>"><?php echo $prof['id']."-".$prof['nombreProf'];?></option>
+                                    <?php }?>
                                 </select>
                             </div>
                         </div>
